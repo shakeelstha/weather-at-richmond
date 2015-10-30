@@ -1,0 +1,59 @@
+<table class="table">
+    <thead>
+        <tr>
+            <td class="h4" align="left">7 Days Weather Forecast</td>
+            <td class="h4" width="50%" align="right">
+                <form class="form-inline" name="forecastCityForm" id="forecastCityForm" ng-submit="forecastCitySubmitForm()" novalidate>
+                    <div class="form-group" ng-class="{'has-error' : forecastCityForm.cityId.$invalid && !forecastCityForm.cityId.$pristine}">                        
+                        <input numbers-only="numbers-only" type="text" id="cityId" name="cityId" ng-model="cityId" class="form-control" placeholder="Enter City ID" maxlength="9" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="forecastCityForm.$invalid">Submit</button>                
+                </form>
+            </td>
+        </tr>
+    </thead>
+</table>
+<br/>
+
+<table class="table table-striped">    
+    <tr>
+        <td class="h5" align="left">{{fcityname}}, {{fcountry}}&nbsp;&nbsp;<a href="http://openweathermap.org/Maps?zoom=12&lat={{flat}}&lon={{flon}}&layers=B0FTTFF" target="_blank">{{fgeocodes}}</a></td>        
+        <td align="right"><strong><a href="#/forecast" ng-click="convertTempTo('C')">&deg;C</a></strong> | <strong><a href="#/forecast" ng-click="convertTempTo('F')">&deg;F</a></strong></td>
+    </tr>
+</table>
+
+<div ng-repeat="forecast in forecastList">
+    <table class="table table-striped">
+        <tr>
+            <td colspan="2" class="h3 date-header">{{forecast.date}}</td>
+        </tr>
+        <tr>
+            <td width="30%"><img src="http://openweathermap.org/img/w/{{forecast.icon}}.png"/></td>
+            <td class="h4" ng-style="padding: 20px 0 0 0;">{{forecast.dayTemp}} &deg;{{ftempScale}}</td>
+        </tr>
+        <tr>
+            <td>{{forecast.main}}</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Cloudiness</td>
+            <td>{{forecast.cloudiness}}</td>
+        </tr>
+        <tr>
+            <td>Pressure</td>
+            <td>{{forecast.pressure}}</td>
+        </tr>
+        <tr>
+            <td>Humidity</td>
+            <td>{{forecast.humidity}} %</td>
+        </tr>
+        <tr>
+            <td>Min Temp</td>
+            <td>{{forecast.minTemp}} &deg;{{ftempScale}}</td>
+        </tr>
+        <tr>
+            <td>Max Temp</td>
+            <td>{{forecast.maxTemp}} &deg;{{ftempScale}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,29 @@
+<div ng-controller="ContactController">
+    <div class="success-margin" ng-show="showMsg">
+        <p class="bg-success bg-success-padding">Thank you for your message.</p>
+    </div>
+    <form id="contactForm" name="contactForm" ng-submit="submitForm()" novalidate>
+        <fieldset>
+            <legend>Contact Us</legend>
+            <div class="form-group" ng-class="{'has-error' : contactForm.fullname.$invalid && !contactForm.fullname.$pristine}">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" class="form-control" placeholder="Shakeel Shrestha" ng-model="user.fullname" required/>
+                <p ng-show="contactForm.fullname.$invalid && !contactForm.fullname.$pristine" class="help-block">Your name is required.</p>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine}">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="shakeel.shrestha@capitalone.com" ng-model="user.email" required/>
+                <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error' : contactForm.msg.$invalid && !contactForm.msg.$pristine}">
+                <label for="msg">Message</label>
+                <textarea rows="10" cols="10" name="msg" id="msg" class="form-control" placeholder="Your message to Us" ng-model="user.msg" required></textarea>
+                <p ng-show="contactForm.msg.$invalid && !contactForm.msg.$pristine" class="help-block">Your message is required.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="contactForm.$invalid">Submit</button>
+        </fieldset>
+    </form>
+</div>

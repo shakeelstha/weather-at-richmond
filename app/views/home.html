@@ -1,0 +1,66 @@
+<table class="table">
+    <thead>
+        <tr>
+            <td class="h4" width="50%" align="left">Weather Today, {{todayDate}}</td>
+            <td class="h4" width="50%" align="right">
+                <form class="form-inline" name="cityForm" id="cityForm" ng-submit="citySubmitForm()" novalidate>
+                    <div class="form-group" ng-class="{'has-error' : cityForm.cityId.$invalid && !cityForm.cityId.$pristine}">                        
+                        <input numbers-only="numbers-only" type="text" id="cityId" name="cityId" ng-model="cityId" class="form-control" placeholder="Enter City ID" maxlength="9" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="cityForm.$invalid">Submit</button>                
+                </form>
+            </td>
+        </tr>
+    </thead>
+</table>
+<br/>
+<table class="table table-striped">    
+    <tr>
+        <td class="h5" align="left">{{cityname}}, {{country}}</td>
+        <td align="right"><strong><a href="#/home" ng-click="convertTempTo('C')">&deg;C</a></strong> | <strong><a href="#/home" ng-click="convertTempTo('F')">&deg;F</a></strong></td>
+    </tr>
+    <tr>
+        <td width="30%"><img src="http://openweathermap.org/img/w/{{weather.icon}}.png"/></td>
+        <td class="h4" ng-style="padding: 20px 0 0 0;">{{currentTemp}} &deg;{{tempScale}}</td>
+    </tr>
+    <tr>
+        <td>{{weather.main}}</td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td>Wind</td>
+        <td>Wind at {{speed}} meters/sec</td>
+    </tr>
+    <tr>
+        <td>Cloudiness</td>
+        <td>{{cloudiness}}</td>
+    </tr>
+    <tr>
+        <td>Pressure</td>
+        <td>{{pressure}}</td>
+    </tr>
+    <tr>
+        <td>Humidity</td>
+        <td>{{humidity}} %</td>
+    </tr>
+    <tr>
+        <td>Min Temp</td>
+        <td>{{minTemp}} &deg;{{tempScale}}</td>
+    </tr>
+    <tr>
+        <td>Max Temp</td>
+        <td>{{maxTemp}} &deg;{{tempScale}}</td>
+    </tr>
+    <tr>
+        <td>Sunrise</td>
+        <td>{{sunrise}}</td>
+    </tr>
+    <tr>
+        <td>Sunset</td>
+        <td>{{sunset}}</td>
+    </tr>
+    <tr>
+        <td>Geo Codes</td>
+        <td><a href="http://openweathermap.org/Maps?zoom=12&lat={{lat}}&lon={{lon}}&layers=B0FTTFF" target="_blank">{{geocodes}}</a></td>
+    </tr>
+</table>
